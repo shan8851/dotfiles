@@ -64,8 +64,6 @@ alias update="sudo apt update && sudo apt upgrade -y"
 # bat
 alias bat="batcat"
 
-:r $VIMRUNTIME/vimrc_example.vim
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
