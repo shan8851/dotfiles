@@ -1,0 +1,30 @@
+[user]
+	name = shan8851
+	email = asamshan456@gmail.com
+	signingkey = /home/shan/.ssh/id_github_sign.pub
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	s = status
+	ca = "!f() { read -p \"Enter commit message: \" msg; git add -A && git commit -S -m \"$msg\"; }; f"
+	po = push origin
+	co = checkout
+	fa = fetch --all
+	cob = "!f() { git checkout -b \"$@\"; }; f"
+	main = !git checkout main && git pull
+	develop = !git checkout develop && git pull
+	pm = !git fetch origin main && git merge --no-ff -S origin/main
+	pd = !git fetch origin develop && git merge --no-ff -S origin/develop
+	undo = reset --soft HEAD^
+  undo-hard = reset --hard HEAD^
+	diff-name = diff --name-only develop
+	diff-stats = diff --stat develop
+[init]
+	defaultBranch = main
+[push]
+	default = current
+[gpg]
+	format = ssh
+[commit]
+	gpgSign = true
+[gpg "ssh"]
+	allowedSignersFile = /home/shan/.config/git/allowed_signers
