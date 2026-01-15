@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Keyboard Remap
+Comment=Swap Ctrl and Super for Mac-like shortcuts
+Exec=setxkbmap -layout gb -option ctrl:swap_lwin_lctl
+X-KDE-autostart-phase=1

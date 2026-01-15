@@ -19,7 +19,6 @@ plugins=(
   git
   zsh-completions
   zsh-autosuggestions
-  autojump
   zsh-syntax-highlighting
 )
 setopt correct
@@ -35,9 +34,6 @@ alias la='ls -la'
 
 # Navigate to nika mono directory
 alias nika="cd ~/shan/nika/nika-mono"
-
-#upgrade
-alias upgrade="sudo apt update && sudo apt upgrade -y"
 
 # Kitty
 alias kittyconf="code ~/.config/kitty/kitty.conf"
@@ -63,7 +59,10 @@ alias gitconfig="vim ~/.gitconfig"
 alias update="sudo apt update && sudo apt upgrade -y"
 # bat
 alias bat="batcat"
-
+# vimrc
+alias vimrc="vim ~/.vimrc"
+# personal site
+alias blog="cd ~/shan/shan_site"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -82,3 +81,10 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # cargo
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# fzf keybindings and completion
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
+
+# zoxide (smarter cd)
+eval "$(zoxide init zsh)"
