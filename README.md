@@ -10,10 +10,11 @@ Feel free to use as inspiration, but always check for secrets and edit for your 
 - `.zshrc` — Zsh shell configuration (Oh My Zsh + Powerlevel10k)
 - `.p10k.zsh` — Powerlevel10k prompt config
 - `.gitconfig` — Git configuration (with SSH signing)
-- `kitty.conf` — Kitty terminal configuration (Catppuccin Frappe theme)
+- `kitty.conf` — Kitty terminal configuration (IBM Plex Mono, classic green theme)
 - `.xbindkeysrc` — Mouse button shortcuts
 - `autostart/keyboard-remap.desktop` — Swap Ctrl/Super for Mac-like shortcuts
 - `vscode-settings.json` — VSCode user settings
+- `CLAUDE.md` — Claude Code AI preferences and coding conventions
 
 ## Key Features
 
@@ -21,7 +22,7 @@ Feel free to use as inspiration, but always check for secrets and edit for your 
 - **fzf** for fuzzy finding (Ctrl+R for history, Ctrl+T for files)
 - **zoxide** for smart directory jumping (`z <partial>`)
 - **lsd** aliased to `ls` for icons and colors
-- **Catppuccin Frappe** theme in Kitty with transparency
+- **Classic green terminal** theme in Kitty (IBM Plex Mono font)
 
 ## Installation
 
@@ -36,6 +37,7 @@ ln -sf ~/shan/dotfiles/.p10k.zsh ~/.p10k.zsh
 ln -sf ~/shan/dotfiles/.xbindkeysrc ~/.xbindkeysrc
 ln -sf ~/shan/dotfiles/kitty.conf ~/.config/kitty/kitty.conf
 cp ~/shan/dotfiles/autostart/* ~/.config/autostart/
+mkdir -p ~/.claude && ln -sf ~/shan/dotfiles/CLAUDE.md ~/.claude/CLAUDE.md
 ```
 
 ## Dependencies
