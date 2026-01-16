@@ -1,9 +1,9 @@
 {
   // Appearance
-  "editor.fontFamily": "Comic Mono",
-  "editor.fontSize": 18,
+  "editor.fontFamily": "IBM Plex Mono",
+  "editor.fontSize": 14,
   "editor.fontWeight": "400",
-  "editor.lineHeight": 22,
+  "editor.lineHeight": 18,
   "editor.letterSpacing": 1,
   "editor.rulers": [120],
   "editor.renderWhitespace": "trailing",
@@ -28,16 +28,11 @@
   },
   "editor.parameterHints.enabled": true,
   "editor.bracketPairColorization.enabled": true,
-  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.enabled": false,
   "editor.inlayHints.padding": false,
   "editor.inlayHints.fontSize": 16,
-  "editor.inlayHints.enabled": "on",
-
-
-  // Formatting
-  "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "off",
   "editor.formatOnSaveMode": "modifications",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "notebook.defaultFormatter": "esbenp.prettier-vscode",
   "html.format.enable": true,
   "html.format.preserveNewLines": true,
@@ -52,13 +47,13 @@
 
   // TypeScript/JavaScript
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterNames.enabled": "none",
   "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": true,
   // "typescript.inlayHints.variableTypes.enabled": true,
   // "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.inlayHints.enumMemberValues.enabled": true,
-  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
+  "typescript.inlayHints.enumMemberValues.enabled": false,
+  "typescript.inlayHints.parameterTypes.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -85,9 +80,10 @@
 
   // Spellcheck
   "cSpell.language": "en-GB",
-  "cSpell.enabledFiletypes": ["makefile", "mdx"],
   "cSpell.userWords": [
     "advanceable",
+    "agglayer",
+    "appkit",
     "Araogn",
     "arbers",
     "Arbitrum",
@@ -157,6 +153,7 @@
     "Leaderboard",
     "Lifi",
     "Lipsum",
+    "Lottie",
     "mantine",
     "metabase",
     "Metis",
@@ -187,9 +184,11 @@
     "presale",
     "prismjs",
     "qrcode",
+    "radiobtn",
     "rainbowkit",
     "Rarible",
     "REDPHONSHIP",
+    "reown",
     "Rinkebey",
     "Rinkedry",
     "sepolia",
@@ -205,6 +204,7 @@
     "tailwindcss",
     "tanstack",
     "Tawk",
+    "ternoa",
     "thirdweb",
     "timeframe",
     "Timeframes",
@@ -213,6 +213,7 @@
     "Tippy",
     "Toadz",
     "toastify",
+    "Tokenlist",
     "TOKENVOTING",
     "TRPC",
     "typegen",
@@ -275,19 +276,22 @@
   "[solidity]": {
     "editor.defaultFormatter": "JuanBlanco.solidity"
   },
-
-  // UX & Window
-  "workbench.sideBar.location": "left",
   "workbench.editor.tabSizing": "shrink",
   "window.openFilesInNewWindow": "off",
   "workbench.colorCustomizations": {
     "editorRuler.foreground": "#383838"
   },
 
+
   // Extensions
   "extensions.ignoreRecommendations": true,
-  "workbench.colorTheme": "Tokyo Hack",
   "github.copilot.nextEditSuggestions.enabled": true,
-  "markdown-preview-enhanced.previewTheme": "monokai.css",
   "workbench.editor.enablePreview": false,
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "task.allowAutomaticTasks": "off",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
+
