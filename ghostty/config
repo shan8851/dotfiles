@@ -1,0 +1,23 @@
+# Ghostty: same file works on Linux and macOS (~/.config/ghostty/config).
+# Font defaults to JetBrains Mono with Nerd Font icons built in.
+
+theme = Catppuccin Mocha
+font-size = 13
+adjust-cell-height = 10%
+
+window-padding-x = 12
+window-padding-y = 10
+window-padding-balance = true
+background-opacity = 0.95
+background-blur = true
+
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+confirm-close-surface = false
+shell-integration-features = no-cursor,sudo,title
+
+# Drop-down terminal from anywhere (needs the KDE prompt to allow global shortcuts)
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-animation-duration = 0.12

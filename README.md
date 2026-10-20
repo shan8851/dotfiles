@@ -1,51 +1,43 @@
 # dotfiles
 
-My personal dotfiles for Linux (Tuxedo OS / KDE Plasma).
+Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symlinked into place by `install.sh`.
 
-This repo contains my core configuration files for my development environment.
-Feel free to use as inspiration, but always check for secrets and edit for your own setup.
+| Path | Goes to | What |
+| --- | --- | --- |
+| `zsh/.zshrc` | `~/.zshrc` | zsh with no framework. Plugins clone themselves on first run |
+| `starship/starship.toml` | `~/.config/starship.toml` | Two-line prompt, Catppuccin Mocha |
+| `ghostty/config` | `~/.config/ghostty/config` | Ghostty terminal, plus a drop-down terminal on Ctrl+` |
+| `git/.gitconfig` | `~/.gitconfig` | Aliases, delta for diffs |
+| `mise/config.toml` | `~/.config/mise/config.toml` | Global tool versions: Node LTS, pnpm |
+| `vscode/settings.json` | `~/.config/Code/User/settings.json` | VS Code: JetBrains Mono, Catppuccin Mocha |
+| `vscode/extensions.txt` | (installed by `install.sh`) | VS Code extensions |
 
-## Included Files
+## Shell
+- **Plugins:** fzf-tab (fuzzy Tab completion), zsh-autosuggestions, zsh-syntax-highlighting, zsh-completions. They live in `~/.local/share/zsh/plugins`. Update them with `plugs_update`.
+- **History:** atuin on Ctrl-R. Up arrow stays as normal history.
+- **fzf:** Ctrl-T finds files, Alt-C jumps to a directory.
+- **zoxide:** `z <partial>` jumps to a directory you've visited.
+- **Node/pnpm:** via [mise](https://mise.jdx.dev). Global versions live in `mise/config.toml`. In a project, `mise use node@22` writes a `mise.toml`, and mise also reads `.nvmrc`.
+- Machine-specific or secret settings go in `~/.zshrc.local`, which is not tracked.
 
-- `.zshrc` — Zsh shell configuration (Oh My Zsh + Powerlevel10k)
-- `.p10k.zsh` — Powerlevel10k prompt config
-- `.gitconfig` — Git configuration (with SSH signing)
-- `kitty.conf` — Kitty terminal configuration (IBM Plex Mono, classic green theme)
-- `.xbindkeysrc` — Mouse button shortcuts
-- `autostart/keyboard-remap.desktop` — Swap Ctrl/Super for Mac-like shortcuts
-- `vscode-settings.json` — VSCode user settings
-- `CLAUDE.md` — Claude Code AI preferences and coding conventions
+## Tips
+- Ghostty has no title bar. Hold Meta and drag to move a window, or Meta + right-drag to resize.
 
-## Key Features
-
-- **Mac-like keyboard shortcuts** via Ctrl↔Super swap
-- **fzf** for fuzzy finding (Ctrl+R for history, Ctrl+T for files)
-- **zoxide** for smart directory jumping (`z <partial>`)
-- **lsd** aliased to `ls` for icons and colors
-- **Classic green terminal** theme in Kitty (IBM Plex Mono font)
-
-## Installation
+## Install
 
 ```bash
-# Clone the repo
+# apt packages (Ghostty from the community PPA)
+sudo add-apt-repository -y ppa:mkasberg/ghostty-ubuntu
+sudo apt update && sudo apt install -y zsh ghostty eza bat fd-find git-delta btop zoxide
+
+# Font: JetBrains Mono Nerd Font (nerd-fonts release JetBrainsMono.tar.xz) into ~/.local/share/fonts, then fc-cache -f
+
+# Not packaged, or too old in Ubuntu 24.04: grab the release binaries into ~/.local/bin
+#   starship, atuin, fzf (needs >= 0.48 for `fzf --zsh`), lazygit, mise
+# e.g. gh release download -R starship/starship -p 'starship-x86_64-unknown-linux-musl.tar.gz'
+
 git clone git@github.com:shan8851/dotfiles.git ~/shan/dotfiles
-
-# Symlink configs (adjust paths as needed)
-ln -sf ~/shan/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/shan/dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/shan/dotfiles/.p10k.zsh ~/.p10k.zsh
-ln -sf ~/shan/dotfiles/.xbindkeysrc ~/.xbindkeysrc
-ln -sf ~/shan/dotfiles/kitty.conf ~/.config/kitty/kitty.conf
-cp ~/shan/dotfiles/autostart/* ~/.config/autostart/
-mkdir -p ~/.claude && ln -sf ~/shan/dotfiles/CLAUDE.md ~/.claude/CLAUDE.md
+~/shan/dotfiles/install.sh
+mise install                  # Node + pnpm from mise/config.toml
+chsh -s "$(command -v zsh)"   # then log out and back in
 ```
-
-## Dependencies
-
-- [Oh My Zsh](https://ohmyz.sh/)
-- [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
-- [fzf](https://github.com/junegunn/fzf)
-- [zoxide](https://github.com/ajeetdsouza/zoxide)
-- [lsd](https://github.com/lsd-rs/lsd)
-- [Kitty](https://sw.kovidgoyal.net/kitty/)
-- [xbindkeys](https://www.nongnu.org/xbindkeys/)
