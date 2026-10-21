@@ -2,7 +2,9 @@
 
 # --- PATH ---------------------------------------------------------------
 typeset -U path
-path=(~/.local/bin $path)
+# pnpm global installs (pnpm i -g): same folder `pnpm setup` adds in .bashrc.
+export PNPM_HOME=~/.local/share/pnpm
+path=(~/.local/bin $PNPM_HOME/bin $path)
 
 # --- History ------------------------------------------------------------
 # atuin handles search (Ctrl-R); this file is the plain fallback.
@@ -77,6 +79,14 @@ alias zshrc='${EDITOR:-code} ~/.zshrc'
 alias reload='exec zsh'
 alias myip="hostname -I | awk '{print \$1}'"
 alias update='sudo apt update && sudo apt upgrade -y && flatpak update -y'
+
+# --- Poker VM (Windows 11 under KVM, see ~/vms/README.md) ----------------
+export LIBVIRT_DEFAULT_URI=qemu:///system   # virsh/virt-viewer use the system VMs
+poker-up() {
+  [[ $(virsh domstate win11-poker) == running ]] || virsh start win11-poker >/dev/null
+  virt-viewer --wait --reconnect win11-poker &>/dev/null &!
+}
+poker-down() { virsh shutdown win11-poker >/dev/null && echo "Shutting down win11-poker" }
 
 # Machine-specific or secret bits live outside the repo
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

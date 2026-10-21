@@ -22,6 +22,7 @@ link btop/btop.conf        ~/.config/btop/btop.conf
 link btop/themes           ~/.config/btop/themes
 link systemd/ydotoold.service ~/.config/systemd/user/ydotoold.service
 link vscode/settings.json  ~/.config/Code/User/settings.json
+link applications/poker-vm.desktop ~/.local/share/applications/poker-vm.desktop
 
 # bat (and delta) only see new themes after a cache rebuild
 bat_cmd=$(command -v bat || command -v batcat || true)

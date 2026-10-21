@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Poker VM
+Comment=Start the Windows 11 poker VM and open its window
+Exec=sh -c "virsh -c qemu:///system start win11-poker; exec virt-viewer -c qemu:///system --wait --reconnect win11-poker"
+Icon=virt-viewer
+Categories=Game;
+Terminal=false
