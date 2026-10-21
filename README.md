@@ -18,6 +18,7 @@ Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symli
 | `applications/poker-vm.desktop` | `~/.local/share/applications/` | "Poker VM" in the app menu: starts the Windows VM and opens it |
 | `bin/read-selection` | `~/.local/bin/read-selection` | Reads highlighted text aloud with Speech Note, see below |
 | `speechnote/setup.sh` | (run it) | Installs Speech Note and binds Meta+Ctrl+Space to `read-selection` |
+| `vm/` | (run `vm/create.sh`) | Windows 11 VM for poker: build script, unattended-install answer file, runbook in `vm/README.md` |
 
 ## Shell
 - **Plugins:** fzf-tab (fuzzy Tab completion), zsh-autosuggestions, zsh-syntax-highlighting, zsh-completions. They live in `~/.local/share/zsh/plugins`. Update them with `plugs_update`.
@@ -26,7 +27,7 @@ Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symli
 - **zoxide:** `z <partial>` jumps to a directory you've visited.
 - **Node/pnpm:** via [mise](https://mise.jdx.dev). Global versions live in `mise/config.toml`. In a project, `mise use node@22` writes a `mise.toml`, and mise also reads `.nvmrc`.
 - Machine-specific or secret settings go in `~/.zshrc.local`, which is not tracked.
-- **Poker VM:** `poker-up` starts the `win11-poker` KVM VM and opens its window, and `poker-down` shuts Windows down cleanly. Closing the window leaves the VM running. The VM itself lives in `~/vms`, outside this repo.
+- **Poker VM:** `poker-up` starts the `win11-poker` KVM VM and opens its window, and `poker-down` shuts Windows down cleanly. Closing the window leaves the VM running. How to rebuild it is in [`vm/README.md`](vm/README.md); its disk and ISOs live in `~/vms`, outside this repo.
 
 ## Desktop (KDE Plasma 6)
 `plasma/apply.sh` sets up the desktop. Everything installs per-user, so it needs no sudo and is safe to rerun:
