@@ -1,0 +1,13 @@
+# ydotool daemon: fallback paste for OpenWhispr on Wayland.
+# Needs /dev/uinput access via udev (see README); no 'input' group required.
+[Unit]
+Description=ydotool daemon
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/ydotoold
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

@@ -20,6 +20,7 @@ link bat/config            ~/.config/bat/config
 link bat/themes            ~/.config/bat/themes
 link btop/btop.conf        ~/.config/btop/btop.conf
 link btop/themes           ~/.config/btop/themes
+link systemd/ydotoold.service ~/.config/systemd/user/ydotoold.service
 link vscode/settings.json  ~/.config/Code/User/settings.json
 
 # bat (and delta) only see new themes after a cache rebuild

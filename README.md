@@ -12,6 +12,7 @@ Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symli
 | `bat/` | `~/.config/bat/` | bat config and Catppuccin theme (delta uses it too) |
 | `btop/` | `~/.config/btop/` | btop with Catppuccin, transparent background |
 | `plasma/apply.sh` | (run it) | KDE desktop theme, see below |
+| `systemd/ydotoold.service` | `~/.config/systemd/user/` | ydotool daemon, the Wayland paste fallback OpenWhispr checks for |
 | `vscode/settings.json` | `~/.config/Code/User/settings.json` | VS Code: JetBrains Mono, Catppuccin Mocha |
 | `vscode/extensions.txt` | (installed by `install.sh`) | VS Code extensions |
 
@@ -44,7 +45,12 @@ KDE's own config files aren't tracked, because they change constantly. The scrip
 ```bash
 # apt packages (Ghostty from the community PPA)
 sudo add-apt-repository -y ppa:mkasberg/ghostty-ubuntu
-sudo apt update && sudo apt install -y zsh ghostty eza bat fd-find git-delta btop zoxide
+sudo apt update && sudo apt install -y zsh ghostty eza bat fd-find git-delta btop zoxide wl-clipboard ydotool ydotoold
+
+# Let the desktop session type through /dev/uinput (for ydotool). Deliberately not the 'input' group,
+# which would let any process read keystrokes.
+echo 'KERNEL=="uinput", TAG+="uaccess"' | sudo tee /etc/udev/rules.d/70-uinput.rules
+sudo udevadm control --reload-rules && sudo udevadm trigger /dev/uinput
 
 # Font: JetBrains Mono Nerd Font (nerd-fonts release JetBrainsMono.tar.xz) into ~/.local/share/fonts, then fc-cache -f
 
@@ -55,6 +61,7 @@ sudo apt update && sudo apt install -y zsh ghostty eza bat fd-find git-delta bto
 git clone git@github.com:shan8851/dotfiles.git ~/shan/dotfiles
 ~/shan/dotfiles/install.sh
 ~/shan/dotfiles/plasma/apply.sh
+systemctl --user enable --now ydotoold   # paste fallback for OpenWhispr
 mise install                  # Node + pnpm from mise/config.toml
 chsh -s "$(command -v zsh)"   # then log out and back in
 ```
