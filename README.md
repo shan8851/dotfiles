@@ -9,6 +9,9 @@ Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symli
 | `ghostty/config` | `~/.config/ghostty/config` | Ghostty terminal, plus a drop-down terminal on Ctrl+` |
 | `git/.gitconfig` | `~/.gitconfig` | Aliases, delta for diffs |
 | `mise/config.toml` | `~/.config/mise/config.toml` | Global tool versions: Node LTS, pnpm |
+| `bat/` | `~/.config/bat/` | bat config and Catppuccin theme (delta uses it too) |
+| `btop/` | `~/.config/btop/` | btop with Catppuccin, transparent background |
+| `plasma/apply.sh` | (run it) | KDE desktop theme, see below |
 | `vscode/settings.json` | `~/.config/Code/User/settings.json` | VS Code: JetBrains Mono, Catppuccin Mocha |
 | `vscode/extensions.txt` | (installed by `install.sh`) | VS Code extensions |
 
@@ -19,6 +22,17 @@ Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symli
 - **zoxide:** `z <partial>` jumps to a directory you've visited.
 - **Node/pnpm:** via [mise](https://mise.jdx.dev). Global versions live in `mise/config.toml`. In a project, `mise use node@22` writes a `mise.toml`, and mise also reads `.nvmrc`.
 - Machine-specific or secret settings go in `~/.zshrc.local`, which is not tracked.
+
+## Desktop (KDE Plasma 6)
+`plasma/apply.sh` sets up the desktop. Everything installs per-user, so it needs no sudo and is safe to rerun:
+- Catppuccin Mocha colour scheme with a Lavender accent. Change `FLAVOUR` and `ACCENT` at the top of the script.
+- Inter for the interface, JetBrains Mono Nerd Font for fixed-width text
+- Papirus-Dark icons with Catppuccin folders, and the Catppuccin cursor
+- Catppuccin splash screen, and the same wallpaper on every screen and the lock screen
+- KWin: blur on, animations at half length, Night Light on
+- Panel: 40px, with the pager and show-desktop button removed
+
+KDE's own config files aren't tracked, because they change constantly. The script is the record of what's set.
 
 ## Tips
 - Ghostty has no title bar. Hold Meta and drag to move a window, or Meta + right-drag to resize.
@@ -38,6 +52,7 @@ sudo apt update && sudo apt install -y zsh ghostty eza bat fd-find git-delta bto
 
 git clone git@github.com:shan8851/dotfiles.git ~/shan/dotfiles
 ~/shan/dotfiles/install.sh
+~/shan/dotfiles/plasma/apply.sh
 mise install                  # Node + pnpm from mise/config.toml
 chsh -s "$(command -v zsh)"   # then log out and back in
 ```

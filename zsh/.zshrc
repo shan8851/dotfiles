@@ -30,6 +30,12 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no                           # fzf-tab takes over
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always --icons $realpath'
 
+# Catppuccin Mocha for fzf (and fzf-tab); bg:-1 keeps the terminal's own background
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:-1,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A,border:#6C7086,label:#CDD6F4"
 # Order matters: fzf before fzf-tab (so fzf-tab owns Tab), syntax highlighting last.
 (( $+commands[fzf] ))      && source <(fzf --zsh)               # Ctrl-T files, Alt-C dirs
 plug Aloxaf/fzf-tab
