@@ -79,6 +79,9 @@ alias zshrc='${EDITOR:-code} ~/.zshrc'
 alias reload='exec zsh'
 alias myip="hostname -I | awk '{print \$1}'"
 alias update='sudo apt update && sudo apt upgrade -y && flatpak update -y'
+alias ports='ss -tulpn'                      # what's listening, and which process
+alias vault='code ~/shan/shan-vault'
+mkcd() { mkdir -p -- "$1" && cd -- "$1" }
 
 # --- Poker VM (Windows 11 under KVM, see ~/vms/README.md) ----------------
 export LIBVIRT_DEFAULT_URI=qemu:///system   # virsh/virt-viewer use the system VMs
