@@ -31,6 +31,8 @@ Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symli
 - Catppuccin splash screen, and the same wallpaper on every screen and the lock screen
 - KWin: blur on, animations at half length, Night Light on
 - Panel: 40px, with the pager and show-desktop button removed
+- Login starts an empty session, and clipboard history keeps 100 items
+- Hides unused startup items (xbindkeys, Spice vdagent, KDE Connect, Kup) and removes broken autostart links
 
 KDE's own config files aren't tracked, because they change constantly. The script is the record of what's set.
 

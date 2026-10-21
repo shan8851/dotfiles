@@ -92,6 +92,19 @@ kw --file kdeglobals --group KDE --key AnimationDurationFactor 0.5
 kw --file kwinrc --group NightColor --key Active true
 qdbus6 org.kde.KWin /KWin reconfigure
 
+step "Session: start empty at login, 100-item clipboard history"
+kw --file ksmserverrc --group General --key loginMode emptySession
+kw --file klipperrc --group General --key MaxClipItems 100
+
+step "Startup: hide unused autostarts, drop broken links"
+# A same-named file with Hidden=true in ~/.config/autostart overrides the system entry.
+# Delete the override file to bring one back.
+mkdir -p ~/.config/autostart
+for app in xbindkeys spice-vdagent org.kde.kdeconnect.daemon kup-daemon; do
+  printf '[Desktop Entry]\nType=Application\nName=%s\nHidden=true\n' "$app" > ~/.config/autostart/$app.desktop
+done
+find ~/.config/autostart -xtype l -delete   # TUXEDO first-boot links whose targets are gone
+
 step "Panel: slimmer, no desktop pager or show-desktop button"
 qdbus6 org.kde.plasmashell /PlasmaShell evaluateScript '
   panels().forEach(function (p) {
