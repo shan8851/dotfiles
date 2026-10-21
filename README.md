@@ -18,6 +18,7 @@ Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symli
 | `applications/poker-vm.desktop` | `~/.local/share/applications/` | "Poker VM" in the app menu: starts the Windows VM and opens it |
 | `bin/read-selection` | `~/.local/bin/read-selection` | Reads highlighted text aloud with Speech Note, see below |
 | `speechnote/setup.sh` | (run it) | Installs Speech Note and binds Meta+Ctrl+Space to `read-selection` |
+| `openwhispr/cleanup-prompt.txt` | (paste it) | OpenWhispr's AI cleanup prompt (Claude Haiku): UK English, poker/dev terms, spoken lists become bullets or numbers. Paste into OpenWhispr's settings as the custom prompt |
 | `vm/` | (run `vm/create.sh`) | Windows 11 VM for poker: build script, unattended-install answer file, runbook in `vm/README.md` |
 
 ## Shell
