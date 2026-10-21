@@ -86,7 +86,7 @@ mkcd() { mkdir -p -- "$1" && cd -- "$1" }
 # --- Poker VM (Windows 11 under KVM, see ~/vms/README.md) ----------------
 export LIBVIRT_DEFAULT_URI=qemu:///system   # virsh/virt-viewer use the system VMs
 poker-up() {
-  [[ $(virsh domstate win11-poker) == running ]] || virsh start win11-poker >/dev/null
+  [[ $(virsh domstate win11-poker 2>/dev/null) == running ]] || virsh start win11-poker >/dev/null || return
   virt-viewer --wait --reconnect win11-poker &>/dev/null &!
 }
 poker-down() { virsh shutdown win11-poker >/dev/null && echo "Shutting down win11-poker" }
