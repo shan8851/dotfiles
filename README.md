@@ -16,6 +16,8 @@ Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symli
 | `vscode/settings.json` | `~/.config/Code/User/settings.json` | VS Code: JetBrains Mono, Catppuccin Mocha |
 | `vscode/extensions.txt` | (installed by `install.sh`) | VS Code extensions |
 | `applications/poker-vm.desktop` | `~/.local/share/applications/` | "Poker VM" in the app menu: starts the Windows VM and opens it |
+| `bin/read-selection` | `~/.local/bin/read-selection` | Reads highlighted text aloud with Speech Note, see below |
+| `speechnote/setup.sh` | (run it) | Installs Speech Note and binds Meta+Ctrl+Space to `read-selection` |
 
 ## Shell
 - **Plugins:** fzf-tab (fuzzy Tab completion), zsh-autosuggestions, zsh-syntax-highlighting, zsh-completions. They live in `~/.local/share/zsh/plugins`. Update them with `plugs_update`.
@@ -39,6 +41,12 @@ Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symli
 - Hides unused startup items (xbindkeys, Spice vdagent, KDE Connect, Kup) and removes broken autostart links
 
 KDE's own config files aren't tracked, because they change constantly. The script is the record of what's set.
+
+## Read aloud
+Highlight text in any app and press **Meta+Ctrl+Space** to have it read aloud. Press it again to stop. If nothing is highlighted, it reads the clipboard.
+- Uses [Speech Note](https://flathub.org/apps/net.mkiol.SpeechNote) (Flatpak) with the Kokoro "Heart" voice, all offline.
+- `speechnote/setup.sh` installs it, starts it at login (actions only work while it runs), allows external actions and binds the key. The only manual step is downloading a voice in the app.
+- The key is registered through KWin's D-Bus shortcut service. Writing `kglobalshortcutsrc` directly doesn't work, because KWin overwrites the file.
 
 ## Tips
 - Ghostty has no title bar. Hold Meta and drag to move a window, or Meta + right-drag to resize.
@@ -64,6 +72,7 @@ sudo udevadm control --reload-rules && sudo udevadm trigger /dev/uinput
 git clone git@github.com:shan8851/dotfiles.git ~/shan/dotfiles
 ~/shan/dotfiles/install.sh
 ~/shan/dotfiles/plasma/apply.sh
+~/shan/dotfiles/speechnote/setup.sh   # read-aloud shortcut
 systemctl --user enable --now ydotoold   # paste fallback for OpenWhispr
 mise install                  # Node + pnpm from mise/config.toml
 chsh -s "$(command -v zsh)"   # then log out and back in

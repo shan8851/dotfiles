@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Read highlighted text aloud with Speech Note (falls back to clipboard).
+text=$(wl-paste --primary --no-newline 2>/dev/null)
+[ -z "$text" ] && text=$(wl-paste --no-newline 2>/dev/null)
+[ -z "$text" ] && exit 0
+exec flatpak run net.mkiol.SpeechNote --action start-reading-text --text "$text"
