@@ -33,6 +33,7 @@ Linux (TUXEDO OS / KDE Plasma, Wayland) dev setup. Configs are plain files symli
 - KWin: blur on, animations at half length, Night Light on
 - Panel: 40px, with the pager and show-desktop button removed
 - Login starts an empty session, and clipboard history keeps 100 items
+- Power: on mains, dim at 10 min, screen off at 15, never sleep (long-running jobs). On battery, dim at 3, off at 5, sleep at 15. Auto-lock after 15 min and on wake
 - Hides unused startup items (xbindkeys, Spice vdagent, KDE Connect, Kup) and removes broken autostart links
 
 KDE's own config files aren't tracked, because they change constantly. The script is the record of what's set.

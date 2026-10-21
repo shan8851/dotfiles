@@ -96,6 +96,26 @@ step "Session: start empty at login, 100-item clipboard history"
 kw --file ksmserverrc --group General --key loginMode emptySession
 kw --file klipperrc --group General --key MaxClipItems 100
 
+step "Power: never sleep on mains (long-running jobs), sleep on battery; auto-lock on"
+power() { # profile dim_sec off_sec suspend_sec(0 = never)
+  kw --file powerdevilrc --group "$1" --group Display --key DimDisplayWhenIdle true
+  kw --file powerdevilrc --group "$1" --group Display --key DimDisplayIdleTimeoutSec "$2"
+  kw --file powerdevilrc --group "$1" --group Display --key TurnOffDisplayWhenIdle true
+  kw --file powerdevilrc --group "$1" --group Display --key TurnOffDisplayIdleTimeoutSec "$3"
+  if (( $4 > 0 )); then
+    kw --file powerdevilrc --group "$1" --group SuspendAndShutdown --key AutoSuspendAction 1
+    kw --file powerdevilrc --group "$1" --group SuspendAndShutdown --key AutoSuspendIdleTimeoutSec "$4"
+  else
+    kw --file powerdevilrc --group "$1" --group SuspendAndShutdown --key AutoSuspendAction 0
+  fi
+}
+power AC      600 900 0
+power Battery 180 300 900
+kw --file kscreenlockerrc --group Daemon --key Autolock true
+kw --file kscreenlockerrc --group Daemon --key Timeout 15
+kw --file kscreenlockerrc --group Daemon --key LockOnResume true
+qdbus6 org.kde.Solid.PowerManagement /org/kde/Solid/PowerManagement reparseConfiguration >/dev/null 2>&1 || true
+
 step "Startup: hide unused autostarts, drop broken links"
 # A same-named file with Hidden=true in ~/.config/autostart overrides the system entry.
 # Delete the override file to bring one back.
